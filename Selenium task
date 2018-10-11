@@ -1,0 +1,44 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class FSecure {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		ChromeOptions option = new ChromeOptions();
+		
+		//This line is to open a new web browser
+		WebDriver driver=new ChromeDriver();
+		
+		//This line is to open the web site 
+		driver.get("https://www.f-secure.com/pl_PL/welcome");
+		
+		//This line is to maximize the web page
+		driver.manage().window().maximize();
+			
+		//This 2 lines are to display the web's name and title
+		System.out.println(driver.getTitle());
+		System.out.println(driver.getCurrentUrl());	
+		
+		//This line is to wait to let the web page to be displayed
+		WebDriverWait wait = new WebDriverWait(driver, 50);
+		
+		//This line is to consent the cookies 
+		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a.btn:nth-child(2)"))).click();
+		
+		//This line is to click the "Kariera" link
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/footer/div/div/div[2]/div[1]/ul/li[4]/a"))).click();
+		
+		//This line is to click the "Office Manager (Office Service Specialist)" link in the section "Hot Jobs"
+		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("article.p-b-2:nth-child(1) > p:nth-child(1) > a:nth-child(1)"))).click();
+		
+		//THE END//
+
+	}
+
+}
